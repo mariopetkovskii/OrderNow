@@ -5,6 +5,7 @@ import 'package:ordernow/constants/endpoint.dart';
 import 'package:ordernow/main.dart';
 import 'package:ordernow/models/product.dart';
 import '../../dialogs/dialogs.dart';
+import '../shopping-cart/shopping-cart.dart';
 
 class ProductListScreen extends StatefulWidget {
   @override
@@ -84,9 +85,7 @@ class ProductListScreenState extends State<ProductListScreen> {
                               Dialogs.showQuantityDialog(product.code, context);
                             },
                             child: Text('Add'),
-                            style: ElevatedButton.styleFrom(
-                            primary: Colors.orange
-                    )
+                            style: ElevatedButton.styleFrom(primary: Colors.orange),
                           ),
                         ],
                       ),
@@ -94,6 +93,16 @@ class ProductListScreenState extends State<ProductListScreen> {
                   );
                 },
               ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ShoppingCartScreen()),
+          );
+        },
+        backgroundColor: Colors.orange,
+        child: Icon(Icons.shopping_cart),
       ),
     );
   }
